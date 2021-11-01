@@ -1,0 +1,26 @@
+import pandas as pd
+import yfinance as yf
+import streamlit as st
+
+st.write ("""
+# Simple Stock Price App
+
+Shown are the stock closing price and volume of Google
+
+""")
+
+tickerSymbol ="GOOGL"
+
+tickerData = yf.Ticker(tickerSymbol)
+
+tickerDf = tickerData.history(period="1d", start="2010-5-31", end="2020-5-31")
+
+# open high low close volume dividends stocks splits
+
+st.line_chart(tickerDf.Close)
+st.line_chart(tickerDf.Volume)
+st.line_chart(tickerDf.Open)
+st.line_chart(tickerDf.High)
+st.line_chart(tickerDf.Dividends)
+
+# must run copy paste: streamlit run C:/Users/HansK/PycharmProjects/Projects/37stocks/main.py into pycharm terminal
